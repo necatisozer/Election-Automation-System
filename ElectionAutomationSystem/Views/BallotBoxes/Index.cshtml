@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ElectionAutomationSystem.Models.BallotBox>
+
+@{
+    ViewBag.Title = "Index";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="index.html">Election Automation System</a>
+    </li>
+    <li class="breadcrumb-item active">Regions / BallotBoxes / Index</li>
+</ol>
+<p>
+    <a class="navbar-brand" href="@(Url.Action("Create", "BallotBoxes"))"><button type="button" class="btn btn-primary">Create New</button></a>
+</p>
+
+<!-- Example DataTables Card-->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Ballot Boxes
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Ballot Box Number</th>
+                        <th>Voter Count</th>
+                        <th>Neighbourhood Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BallotBoxNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.VoterCount)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Neighbourhood.NeighbourhoodName)
+                            </td>
+                            <td>
+                                <a class="navbar-brand" href="@(Url.Action("Edit", "BallotBoxes", new { id = item.BallotBoxId }))"><button type="button" class="btn btn-info">Edit</button></a>
+                                <a class="navbar-brand" href="@(Url.Action("Details", "BallotBoxes", new { id = item.BallotBoxId }))"><button type="button" class="btn btn-warning">Details</button></a>
+                                <a class="navbar-brand" href="@(Url.Action("Delete", "BallotBoxes", new { id = item.BallotBoxId }))"><button type="button" class="btn btn-danger">Delete </button></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>

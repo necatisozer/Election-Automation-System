@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ElectionAutomationSystem.Models.Country>
+
+@{
+    ViewBag.Title = "Index";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="index.html">Election Automation System</a>
+    </li>
+    <li class="breadcrumb-item active">Regions / Countries / Index</li>
+</ol>
+<p>
+    <a class="navbar-brand" href="@(Url.Action("Create", "Countries"))"><button type="button" class="btn btn-primary">Create New</button></a>
+</p>
+
+<!-- Example DataTables Card-->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Countries
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Country Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.CountryName)
+                            </td>
+                            <td>
+                                <a class="navbar-brand" href="@(Url.Action("Edit", "Countries", new { id = item.CountryId }))"><button type="button" class="btn btn-info">Edit</button></a>
+                                <a class="navbar-brand" href="@(Url.Action("Details", "Countries", new { id = item.CountryId }))"><button type="button" class="btn btn-warning">Details</button></a>
+                                <a class="navbar-brand" href="@(Url.Action("Delete", "Countries", new { id = item.CountryId }))"><button type="button" class="btn btn-danger">Delete </button></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>

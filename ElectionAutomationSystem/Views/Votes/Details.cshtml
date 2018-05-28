@@ -1,0 +1,42 @@
+﻿@model ElectionAutomationSystem.Models.Vote
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Vote</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.VoteCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoteCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BallotBox.BallotBoxId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BallotBox.BallotBoxId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Party.PartyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Party.PartyName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VoteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

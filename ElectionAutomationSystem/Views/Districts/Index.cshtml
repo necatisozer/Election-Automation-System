@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ElectionAutomationSystem.Models.District>
+
+@{
+    ViewBag.Title = "Index";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="index.html">Election Automation System</a>
+    </li>
+    <li class="breadcrumb-item active">Regions / Districts / Index</li>
+</ol>
+
+<p>
+    <a class="navbar-brand" href="@(Url.Action("Create", "Districts"))"><button type="button" class="btn btn-primary">Create New</button></a>
+</p>
+
+<!-- Example DataTables Card-->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Districts
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>District Name</th>
+                        <th>Providence Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DistrictName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Province.ProvinceName)
+                            </td>
+                            <td>
+                                <a class="navbar-brand" href="@(Url.Action("Edit", "Districts", new { id = item.DistrictId }))"><button type="button" class="btn btn-info">Edit</button></a>
+                                <a class="navbar-brand" href="@(Url.Action("Details", "Districts", new { id = item.DistrictId }))"><button type="button" class="btn btn-warning">Details</button></a>
+                                <a class="navbar-brand" href="@(Url.Action("Delete", "Districts", new { id = item.DistrictId }))"><button type="button" class="btn btn-danger">Delete </button></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>

@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ElectionAutomationSystem.Models.Party>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="index.html">Election Automation System</a>
+    </li>
+    <li class="breadcrumb-item active">Regions / Parties / Index</li>
+</ol>
+<p>
+    <a class="navbar-brand" href="@(Url.Action("Create", "Parties"))"><button type="button" class="btn btn-primary">Create New</button></a>
+</p>
+
+<!-- Example DataTables Card-->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Parties
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Party Name</th>
+                        <th>Founder</th>
+                        <th>Foundation Date</th>
+                        <th>President Name</th>
+                        <th>Province Name</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if(item.PartyName.Equals("Empty") || item.PartyName.Equals("Invalid"))
+                        {
+                            continue;
+                        }
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PartyName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Founder)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FoundationDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.President.PresidentName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Province.ProvinceName)
+                            </td>
+                            <td>
+                                <a class="navbar-brand" href="@(Url.Action("Edit", "Parties", new { id = item.PartyId }))"><button type="button" class="btn btn-info">Edit</button></a>
+                                <a class="navbar-brand" href="@(Url.Action("Details", "Parties", new { id = item.PartyId }))"><button type="button" class="btn btn-warning">Details</button></a>
+                                <a class="navbar-brand" href="@(Url.Action("Delete", "Parties", new { id = item.PartyId }))"><button type="button" class="btn btn-danger">Delete </button></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+</div>

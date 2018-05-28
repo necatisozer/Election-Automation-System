@@ -1,0 +1,38 @@
+﻿@model ElectionAutomationSystem.Models.Neighbourhood
+
+@{
+    ViewBag.Title = "Details";
+}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="index.html">Election Automation System</a>
+    </li>
+    <li class="breadcrumb-item active">Regions / Neighbourhoods / Details</li>
+</ol>
+
+<div>
+    <h4>Neighbourhood</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NeighbourhoodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NeighbourhoodName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.District.DistrictName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.District.DistrictName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.NeighbourhoodId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

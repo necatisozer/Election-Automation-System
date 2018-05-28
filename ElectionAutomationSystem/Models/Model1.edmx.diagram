@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a9464113890543f0b4381f4076986aa9" Name="Diagram1">
+        <EntityTypeShape EntityType="ElectionDatabaseModel.BallotBox" Width="1.5" PointX="12" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectionDatabaseModel.Country" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectionDatabaseModel.District" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectionDatabaseModel.Election" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectionDatabaseModel.Neighbourhood" Width="1.5" PointX="9.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectionDatabaseModel.Party" Width="1.5" PointX="9.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectionDatabaseModel.President" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectionDatabaseModel.Province" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectionDatabaseModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ElectionDatabaseModel.Vote" Width="1.5" PointX="14.25" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="ElectionDatabaseModel.FK_BallotBox_Neighbourhood" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectionDatabaseModel.FK_Vote_BallotBox" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectionDatabaseModel.FK_Election_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectionDatabaseModel.FK_District_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectionDatabaseModel.FK_Neighbourhood_District" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectionDatabaseModel.FK_Province_Election" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectionDatabaseModel.FK_Party_President" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectionDatabaseModel.FK_Party_Province" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectionDatabaseModel.FK_Vote_Party" ManuallyRouted="false" />
+        <AssociationConnector Association="ElectionDatabaseModel.FK_President_Province" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

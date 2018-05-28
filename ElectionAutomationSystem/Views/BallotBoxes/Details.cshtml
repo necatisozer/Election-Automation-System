@@ -1,0 +1,42 @@
+﻿@model ElectionAutomationSystem.Models.BallotBox
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BallotBox</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.BallotBoxNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BallotBoxNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VoterCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VoterCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Neighbourhood.NeighbourhoodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Neighbourhood.NeighbourhoodName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BallotBoxId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
