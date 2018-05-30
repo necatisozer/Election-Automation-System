@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ElectionDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ElectionDatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BallotBox">
           <Key>
             <PropertyRef Name="BallotBoxId" />
@@ -51,12 +51,12 @@
             <PropertyRef Name="PartyId" />
           </Key>
           <Property Name="PartyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PartyName" Type="nvarchar(max)" />
+          <Property Name="PartyName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="PresidentId" Type="int" />
           <Property Name="Founder" Type="nvarchar(max)" />
           <Property Name="FoundationDate" Type="date" />
           <Property Name="HeadquartersId" Type="int" />
-          <Property Name="IsParty" Type="bit" />
+          <Property Name="IsParty" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="President">
           <Key>
@@ -93,7 +93,7 @@
           <Property Name="VoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BallotBoxId" Type="int" />
           <Property Name="PartyId" Type="int" />
-          <Property Name="VoteCount" Type="int" />
+          <Property Name="VoteCount" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_BallotBox_Neighbourhood">
           <End Role="Neighbourhood" Type="Self.Neighbourhood" Multiplicity="0..1" />
@@ -267,8 +267,7 @@
             <End Role="Vote" EntitySet="Vote" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ElectionDatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -327,12 +326,12 @@
             <PropertyRef Name="PartyId" />
           </Key>
           <Property Name="PartyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PartyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PartyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PresidentId" Type="Int32" />
           <Property Name="Founder" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FoundationDate" Type="DateTime" Precision="0" />
           <Property Name="HeadquartersId" Type="Int32" />
-          <Property Name="IsParty" Type="Boolean" />
+          <Property Name="IsParty" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="President" Relationship="Self.FK_Party_President" FromRole="Party" ToRole="President" />
           <NavigationProperty Name="Province" Relationship="Self.FK_Party_Province" FromRole="Party" ToRole="Province" />
           <NavigationProperty Name="Votes" Relationship="Self.FK_Vote_Party" FromRole="Party" ToRole="Vote" />
@@ -378,7 +377,7 @@
           <Property Name="VoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="BallotBoxId" Type="Int32" />
           <Property Name="PartyId" Type="Int32" />
-          <Property Name="VoteCount" Type="Int32" />
+          <Property Name="VoteCount" Type="Int32" Nullable="false" />
           <NavigationProperty Name="BallotBox" Relationship="Self.FK_Vote_BallotBox" FromRole="Vote" ToRole="BallotBox" />
           <NavigationProperty Name="Party" Relationship="Self.FK_Vote_Party" FromRole="Vote" ToRole="Party" />
         </EntityType>

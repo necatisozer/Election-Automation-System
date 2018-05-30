@@ -35,10 +35,8 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        if(item.PartyName.Equals("Empty") || item.PartyName.Equals("Invalid"))
+                        if(item.IsParty)
                         {
-                            continue;
-                        }
                         <tr>
                             <td>
                                 @Html.DisplayFor(modelItem => item.PartyName)
@@ -61,6 +59,7 @@
                                 <a class="navbar-brand" href="@(Url.Action("Delete", "Parties", new { id = item.PartyId }))"><button type="button" class="btn btn-danger">Delete </button></a>
                             </td>
                         </tr>
+                        }
                     }
                 </tbody>
             </table>

@@ -26,7 +26,7 @@ namespace ElectionAutomationSystem.Models
         public string Founder { get; set; }
         public Nullable<System.DateTime> FoundationDate { get; set; }
         public Nullable<int> HeadquartersId { get; set; }
-        public Nullable<bool> IsParty { get; set; }
+        public bool IsParty { get; set; }
     
         public virtual President President { get; set; }
         public virtual Province Province { get; set; }

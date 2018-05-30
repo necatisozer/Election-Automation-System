@@ -17,7 +17,7 @@ namespace ElectionAutomationSystem.Models
         public int VoteId { get; set; }
         public Nullable<int> BallotBoxId { get; set; }
         public Nullable<int> PartyId { get; set; }
-        public Nullable<int> VoteCount { get; set; }
+        public int VoteCount { get; set; }
     
         public virtual BallotBox BallotBox { get; set; }
         public virtual Party Party { get; set; }

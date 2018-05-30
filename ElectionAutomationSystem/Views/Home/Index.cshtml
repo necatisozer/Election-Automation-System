@@ -49,13 +49,6 @@
 </div>
 <!-- /.container-fluid-->
 <!-- /.content-wrapper-->
-<footer class="sticky-footer">
-    <div class="container">
-        <div class="text-center">
-            <small>Copyright © Your Website 2018</small>
-        </div>
-    </div>
-</footer>
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fa fa-angle-up"></i>
@@ -78,37 +71,171 @@
         </div>
     </div>
 </div>
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
-<script src="vendor/chart.js/Chart.min.js"></script>
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin.min.js"></script>
+<script src="~/vendor/chart.js/Chart.min.js"></script>
 <!-- Custom scripts for this page-->
 <!--<script src="js/sb-admin-charts.min.js"></script>-->
 <script>
+    // -- Default font family and font color
+    Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+    Chart.defaults.global.defaultFontColor = '#292b2c';
     // -- Pie Chart
     var ctx = document.getElementById("myPieChart");
+    @{
+        var voteCountList = new List<int>();
+    }
     var myPieChart = new Chart(ctx, {
         type: 'pie',
         data: {
             labels: [
-                @foreach (var item in Model.Parties.ToList())
+                @foreach (var party in Model.Parties.ToList())
                 {
-                    int voteCount = 0;
-                    if(!item.PartyName.Equals("Empty")&&!item.PartyName.Equals("Invalid"))
+                    if (party.IsParty)
                     {
-                        @:"@item.PartyName",
+                        @:"@party.PartyName",
+                        int voteCount = 0;
+                        foreach (var vote in Model.Votes.ToList())
+                        {
+                            if (vote.Party.Equals(party))
+                            {
+                                voteCount += vote.VoteCount;
+                            }
+                        }
+                        voteCountList.Add(voteCount);
                     }
                 }
             ],
             datasets: [{
-                data: [5,7,8,9,10],
+                data: [
+                    @foreach (var voteCount in voteCountList)
+                    {
+                        @:@voteCount,
+                    }
+                ],
                 backgroundColor: ['#007bff', '#dc3545', '#ffc107', '#28a745', '#9966CC', '#DE5D83', '#964B00','#00FFFF'],
             }],
         },
+    });
+    // -- Bar Chart
+    var ctx = document.getElementById("myBarChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+                @foreach (var party in Model.Parties.ToList())
+                {
+                    if (party.IsParty)
+                    {
+                        @:"@party.PartyName",
+                    }
+                }
+            ],
+            datasets: [{
+                label: "Votes",
+                backgroundColor: "rgba(2,117,216,1)",
+                borderColor: "rgba(2,117,216,1)",
+                data: [
+                    @foreach (var voteCount in voteCountList)
+                    {
+                        @:@voteCount,
+                    }
+                ],
+            }],
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'month'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 6
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        @{
+                            int maxValue = voteCountList.Max(voteCount => voteCount);
+                            int topOfBar = maxValue + 1000 - maxValue % 1000;
+                        }
+                        max: @topOfBar,
+                        maxTicksLimit: 5
+                    },
+                    gridLines: {
+                        display: true
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
+        }
+    });
+    // -- Area Chart
+    var ctx = document.getElementById("myAreaChart");
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [
+                @foreach (var party in Model.Parties.ToList())
+                {
+                    if (party.IsParty)
+                    {
+                        @:"@party.PartyName",
+                    }
+                }
+            ],
+            datasets: [{
+                label: "Votes",
+                lineTension: 0.3,
+                backgroundColor: "rgba(2,117,216,0.2)",
+                borderColor: "rgba(2,117,216,1)",
+                pointRadius: 5,
+                pointBackgroundColor: "rgba(2,117,216,1)",
+                pointBorderColor: "rgba(255,255,255,0.8)",
+                pointHoverRadius: 5,
+                pointHoverBackgroundColor: "rgba(2,117,216,1)",
+                pointHitRadius: 20,
+                pointBorderWidth: 2,
+                data: [
+                    @foreach (var voteCount in voteCountList)
+                    {
+                        @:@voteCount,
+                    }
+                ],
+            }],
+        },
+        options: {
+            scales: {
+                xAxes: [{
+                    time: {
+                        unit: 'date'
+                    },
+                    gridLines: {
+                        display: false
+                    },
+                    ticks: {
+                        maxTicksLimit: 7
+                    }
+                }],
+                yAxes: [{
+                    ticks: {
+                        min: 0,
+                        max: @topOfBar,
+                        maxTicksLimit: 5
+                    },
+                    gridLines: {
+                        color: "rgba(0, 0, 0, .125)",
+                    }
+                }],
+            },
+            legend: {
+                display: false
+            }
+        }
     });
 </script>
