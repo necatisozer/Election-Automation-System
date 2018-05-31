@@ -4,8 +4,6 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
 <div>
     <h4>Party</h4>
     <hr />
@@ -51,7 +49,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Province.ProvinceName)
+            Headquarters
         </dt>
 
         <dd>
@@ -61,6 +59,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PartyId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-danger" type="button" data-dismiss="modal">Back</button>
 </p>

@@ -33,14 +33,14 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(province);
+            return PartialView(province);
         }
 
         // GET: Provinces/Create
         public ActionResult Create()
         {
             ViewBag.ElectionId = new SelectList(db.Elections, "ElectionId", "ElectionTitle");
-            return View();
+            return PartialView();
         }
 
         // POST: Provinces/Create
@@ -58,7 +58,7 @@ namespace ElectionAutomationSystem.Controllers
             }
 
             ViewBag.ElectionId = new SelectList(db.Elections, "ElectionId", "ElectionTitle", province.ElectionId);
-            return View(province);
+            return PartialView(province);
         }
 
         // GET: Provinces/Edit/5
@@ -74,7 +74,7 @@ namespace ElectionAutomationSystem.Controllers
                 return HttpNotFound();
             }
             ViewBag.ElectionId = new SelectList(db.Elections, "ElectionId", "ElectionTitle", province.ElectionId);
-            return View(province);
+            return PartialView(province);
         }
 
         // POST: Provinces/Edit/5
@@ -91,7 +91,7 @@ namespace ElectionAutomationSystem.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.ElectionId = new SelectList(db.Elections, "ElectionId", "ElectionTitle", province.ElectionId);
-            return View(province);
+            return PartialView(province);
         }
 
         // GET: Provinces/Delete/5
@@ -106,7 +106,7 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(province);
+            return PartialView(province);
         }
 
         // POST: Provinces/Delete/5

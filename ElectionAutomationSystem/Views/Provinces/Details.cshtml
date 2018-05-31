@@ -3,37 +3,29 @@
 @{
     ViewBag.Title = "Details";
 }
-<ol class="breadcrumb">
-    <li class="breadcrumb-item">
-        <a href="index.html">Election Automation System</a>
-    </li>
-    <li class="breadcrumb-item active">Regions / Provinces / Details</li>
-</ol>
+
+<div>
+    <h4>Province</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProvinceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProvinceName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Election.ElectionTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Election.ElectionTitle)
+        </dd>
+
+    </dl>
+</div>
 <p>
-
-    <div>
-        <h4>Province</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.ProvinceName)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.ProvinceName)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.Election.ElectionTitle)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.Election.ElectionTitle)
-            </dd>
-
-        </dl>
-    </div>
-<p>
-    <a class="navbar-brand" href="@(Url.Action("Edit", "Provinces"))"><button type="button" class="btn btn-primary">Edit</button></a>
-    <a class="navbar-brand" href="@(Url.Action("Index", "Provinces"))"><button type="button" class="btn btn-danger">Cancel</button></a>
+    <button class="btn btn-danger" type="button" data-dismiss="modal">Back</button>
 </p>

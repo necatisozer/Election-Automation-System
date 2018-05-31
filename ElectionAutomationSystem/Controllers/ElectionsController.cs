@@ -33,14 +33,14 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(election);
+            return PartialView(election);
         }
 
         // GET: Elections/Create
         public ActionResult Create()
         {
             ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "CountryName");
-            return View();
+            return PartialView();
         }
 
         // POST: Elections/Create
@@ -58,7 +58,7 @@ namespace ElectionAutomationSystem.Controllers
             }
 
             ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "CountryName", election.CountryId);
-            return View(election);
+            return PartialView(election);
         }
 
         // GET: Elections/Edit/5
@@ -74,7 +74,7 @@ namespace ElectionAutomationSystem.Controllers
                 return HttpNotFound();
             }
             ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "CountryName", election.CountryId);
-            return View(election);
+            return PartialView(election);
         }
 
         // POST: Elections/Edit/5
@@ -91,7 +91,7 @@ namespace ElectionAutomationSystem.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.CountryId = new SelectList(db.Countries, "CountryId", "CountryName", election.CountryId);
-            return View(election);
+            return PartialView(election);
         }
 
         // GET: Elections/Delete/5
@@ -106,7 +106,7 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(election);
+            return PartialView(election);
         }
 
         // POST: Elections/Delete/5

@@ -33,7 +33,7 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(vote);
+            return PartialView(vote);
         }
 
         // GET: Votes/Create
@@ -41,7 +41,7 @@ namespace ElectionAutomationSystem.Controllers
         {
             ViewBag.BallotBoxId = new SelectList(db.BallotBoxes, "BallotBoxId", "BallotBoxNumber");
             ViewBag.PartyId = new SelectList(db.Parties, "PartyId", "PartyName");
-            return View();
+            return PartialView();
         }
 
         // POST: Votes/Create
@@ -60,7 +60,7 @@ namespace ElectionAutomationSystem.Controllers
 
             ViewBag.BallotBoxId = new SelectList(db.BallotBoxes, "BallotBoxId", "BallotBoxId", vote.BallotBoxId);
             ViewBag.PartyId = new SelectList(db.Parties, "PartyId", "PartyName", vote.PartyId);
-            return View(vote);
+            return PartialView(vote);
         }
 
         // GET: Votes/Edit/5
@@ -77,7 +77,7 @@ namespace ElectionAutomationSystem.Controllers
             }
             ViewBag.BallotBoxId = new SelectList(db.BallotBoxes, "BallotBoxId", "BallotBoxId", vote.BallotBoxId);
             ViewBag.PartyId = new SelectList(db.Parties, "PartyId", "PartyName", vote.PartyId);
-            return View(vote);
+            return PartialView(vote);
         }
 
         // POST: Votes/Edit/5
@@ -95,7 +95,7 @@ namespace ElectionAutomationSystem.Controllers
             }
             ViewBag.BallotBoxId = new SelectList(db.BallotBoxes, "BallotBoxId", "BallotBoxId", vote.BallotBoxId);
             ViewBag.PartyId = new SelectList(db.Parties, "PartyId", "PartyName", vote.PartyId);
-            return View(vote);
+            return PartialView(vote);
         }
 
         // GET: Votes/Delete/5
@@ -110,7 +110,7 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(vote);
+            return PartialView(vote);
         }
 
         // POST: Votes/Delete/5

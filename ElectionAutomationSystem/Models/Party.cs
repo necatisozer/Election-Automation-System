@@ -11,7 +11,8 @@ namespace ElectionAutomationSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Party
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,6 +25,8 @@ namespace ElectionAutomationSystem.Models
         public string PartyName { get; set; }
         public Nullable<int> PresidentId { get; set; }
         public string Founder { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FoundationDate { get; set; }
         public Nullable<int> HeadquartersId { get; set; }
         public bool IsParty { get; set; }

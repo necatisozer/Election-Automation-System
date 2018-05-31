@@ -3,12 +3,44 @@
 @{
     ViewBag.Title = "Index";
 }
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home Page - Election Automation System</title>
+    <!-- Bootstrap core CSS-->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin.css" rel="stylesheet">
+</head>
 <ol class="breadcrumb">
     <li class="breadcrumb-item">
         <a href="index.html">Election Automation System</a>
     </li>
-    <li class="breadcrumb-item active">Homepage</li>
+    <li class="breadcrumb-item active">Home Page</li>
 </ol>
+
+@{
+    int emptyVoteCount = 0;
+    int invalidVoteCount = 0;
+
+    foreach (var vote in Model.Votes.ToList())
+    {
+        if (vote.Party.PartyId == 6)
+        {
+            emptyVoteCount += vote.VoteCount;
+        }
+        else if (vote.Party.PartyId == 7)
+        {
+            invalidVoteCount += vote.VoteCount;
+        }
+    }
+}
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4">
@@ -20,7 +52,7 @@
                 <div class="card-body">
                     <canvas id="myPieChart" width="100%" height="108"></canvas>
                 </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                <div class="card-footer small text-muted">Empty: @emptyVoteCount votes <br> Invalid: @invalidVoteCount votes </div>
             </div>
         </div>
         <div class="col-lg-8">
@@ -32,7 +64,7 @@
                 <div class="card-body">
                     <canvas id="myBarChart" width="100" height="50"></canvas>
                 </div>
-                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                <div class="card-footer small text-muted">Empty: @emptyVoteCount votes <br> Invalid: @invalidVoteCount votes </div>
             </div>
         </div>
     </div>
@@ -44,7 +76,7 @@
         <div class="card-body">
             <canvas id="myAreaChart" width="100%" height="30"></canvas>
         </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        <div class="card-footer small text-muted">Empty: @emptyVoteCount votes <br> Invalid: @invalidVoteCount votes </div>
     </div>
 </div>
 <!-- /.container-fluid-->
@@ -71,19 +103,27 @@
         </div>
     </div>
 </div>
+<!-- Bootstrap core JavaScript-->
+<script src="~/vendor/jquery/jquery.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
 <!-- Page level plugin JavaScript-->
 <script src="~/vendor/chart.js/Chart.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="~/js/sb-admin.min.js"></script>
 <!-- Custom scripts for this page-->
-<!--<script src="js/sb-admin-charts.min.js"></script>-->
+@*<script src="~/js/sb-admin-charts.min.js"></script>*@
 <script>
     // -- Default font family and font color
     Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
     Chart.defaults.global.defaultFontColor = '#292b2c';
-    // -- Pie Chart
-    var ctx = document.getElementById("myPieChart");
+
     @{
         var voteCountList = new List<int>();
     }
+    // -- Pie Chart
+    var ctx = document.getElementById("myPieChart");
     var myPieChart = new Chart(ctx, {
         type: 'pie',
         data: {

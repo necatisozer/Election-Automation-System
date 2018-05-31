@@ -4,12 +4,10 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Party</h4>
         <hr />
@@ -25,7 +23,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PresidentId, "PresidentId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.PresidentId, "PresidentName", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("PresidentId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.PresidentId, "", new { @class = "text-danger" })
@@ -49,7 +47,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.HeadquartersId, "HeadquartersId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.HeadquartersId, "HeadquartersName", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("HeadquartersId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.HeadquartersId, "", new { @class = "text-danger" })
@@ -68,12 +66,13 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <button class="btn btn-danger" type="button" data-dismiss="modal">Cancel</button>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

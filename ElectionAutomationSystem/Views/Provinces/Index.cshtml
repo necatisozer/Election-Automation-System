@@ -3,14 +3,33 @@
 @{
     ViewBag.Title = "Index";
 }
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Provinces - Election Automation System</title>
+    <!-- Bootstrap core CSS-->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="~/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Page level plugin CSS-->
+    <link href="~/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="~/css/sb-admin.css" rel="stylesheet">
+</head>
+
 <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-        <a href="index.html">Election Automation System</a>
-    </li>
-    <li class="breadcrumb-item active">Regions / Provinces / Index</li>
+    <li class="breadcrumb-item"><a href="@(Url.Action("Index", "Home"))">Election Automation System</a></li>
+    <li class="breadcrumb-item"><a href="#">Regions</a></li>
+    <li class="breadcrumb-item"><a href="@(Url.Action("Index", "Provinces"))">Provinces</a></li>
+    <li class="breadcrumb-item active">Index</li>
 </ol>
+
 <p>
-    <a class="navbar-brand" href="@(Url.Action("Create", "Provinces"))"><button type="button" class="btn btn-primary">Create New</button></a>
+    <a class="navbar-brand" data-toggle="modal" data-target="#popupId" onclick="showCreate('Provinces')"><button type="button" class="btn btn-primary">Create New</button></a>
 </p>
 
 <!-- Example DataTables Card-->
@@ -39,9 +58,9 @@
                                 @Html.DisplayFor(modelItem => item.Election.ElectionTitle)
                             </td>
                             <td>
-                                <a class="navbar-brand" href="@(Url.Action("Edit", "Provinces", new { id = item.ProvinceId }))"><button type="button" class="btn btn-info">Edit</button></a>
-                                <a class="navbar-brand" href="@(Url.Action("Details", "Provinces", new { id = item.ProvinceId }))"><button type="button" class="btn btn-warning">Details</button></a>
-                                <a class="navbar-brand" href="@(Url.Action("Delete", "Provinces", new { id = item.ProvinceId }))"><button type="button" class="btn btn-danger">Delete </button></a>
+                                <a class="navbar-brand" data-toggle="modal" data-target="#popupId" onclick="showEdit('Provinces',@item.ProvinceId)"><button type="button" class="btn btn-info">Edit</button></a>
+                                <a class="navbar-brand" data-toggle="modal" data-target="#popupId" onclick="showDetails('Provinces',@item.ProvinceId)"><button type="button" class="btn btn-warning">Details</button></a>
+                                <a class="navbar-brand" data-toggle="modal" data-target="#popupId" onclick="showDelete('Provinces',@item.ProvinceId)"><button type="button" class="btn btn-danger">Delete </button></a>
                             </td>
                         </tr>
                     }
@@ -51,3 +70,16 @@
     </div>
     <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
 </div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="~/vendor/jquery/jquery.min.js"></script>
+<script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="~/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Page level plugin JavaScript-->
+<script src="~/vendor/datatables/jquery.dataTables.js"></script>
+<script src="~/vendor/datatables/dataTables.bootstrap4.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="~/js/sb-admin.min.js"></script>
+<!-- Custom scripts for this page-->
+<script src="~/js/sb-admin-datatables.min.js"></script>

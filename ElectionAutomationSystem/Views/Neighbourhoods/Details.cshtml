@@ -3,12 +3,6 @@
 @{
     ViewBag.Title = "Details";
 }
-<ol class="breadcrumb">
-    <li class="breadcrumb-item">
-        <a href="index.html">Election Automation System</a>
-    </li>
-    <li class="breadcrumb-item active">Regions / Neighbourhoods / Details</li>
-</ol>
 
 <div>
     <h4>Neighbourhood</h4>
@@ -33,6 +27,5 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.NeighbourhoodId }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button class="btn btn-danger" type="button" data-dismiss="modal">Back</button>
 </p>

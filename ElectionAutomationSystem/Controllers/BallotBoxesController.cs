@@ -33,14 +33,14 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(ballotBox);
+            return PartialView(ballotBox);
         }
 
         // GET: BallotBoxes/Create
         public ActionResult Create()
         {
             ViewBag.NeighbourhoodId = new SelectList(db.Neighbourhoods, "NeighbourhoodId", "NeighbourhoodName");
-            return View();
+            return PartialView();
         }
 
         // POST: BallotBoxes/Create
@@ -58,7 +58,7 @@ namespace ElectionAutomationSystem.Controllers
             }
 
             ViewBag.NeighbourhoodId = new SelectList(db.Neighbourhoods, "NeighbourhoodId", "NeighbourhoodName", ballotBox.NeighbourhoodId);
-            return View(ballotBox);
+            return PartialView(ballotBox);
         }
 
         // GET: BallotBoxes/Edit/5
@@ -74,7 +74,7 @@ namespace ElectionAutomationSystem.Controllers
                 return HttpNotFound();
             }
             ViewBag.NeighbourhoodId = new SelectList(db.Neighbourhoods, "NeighbourhoodId", "NeighbourhoodName", ballotBox.NeighbourhoodId);
-            return View(ballotBox);
+            return PartialView(ballotBox);
         }
 
         // POST: BallotBoxes/Edit/5
@@ -91,7 +91,7 @@ namespace ElectionAutomationSystem.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.NeighbourhoodId = new SelectList(db.Neighbourhoods, "NeighbourhoodId", "NeighbourhoodName", ballotBox.NeighbourhoodId);
-            return View(ballotBox);
+            return PartialView(ballotBox);
         }
 
         // GET: BallotBoxes/Delete/5
@@ -106,7 +106,7 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(ballotBox);
+            return PartialView(ballotBox);
         }
 
         // POST: BallotBoxes/Delete/5

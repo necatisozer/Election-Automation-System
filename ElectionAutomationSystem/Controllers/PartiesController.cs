@@ -33,7 +33,7 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(party);
+            return PartialView(party);
         }
 
         // GET: Parties/Create
@@ -41,7 +41,7 @@ namespace ElectionAutomationSystem.Controllers
         {
             ViewBag.PresidentId = new SelectList(db.Presidents, "PresidentId", "PresidentName");
             ViewBag.HeadquartersId = new SelectList(db.Provinces, "ProvinceId", "ProvinceName");
-            return View();
+            return PartialView();
         }
 
         // POST: Parties/Create
@@ -60,7 +60,7 @@ namespace ElectionAutomationSystem.Controllers
 
             ViewBag.PresidentId = new SelectList(db.Presidents, "PresidentId", "PresidentName", party.PresidentId);
             ViewBag.HeadquartersId = new SelectList(db.Provinces, "ProvinceId", "ProvinceName", party.HeadquartersId);
-            return View(party);
+            return PartialView(party);
         }
 
         // GET: Parties/Edit/5
@@ -77,7 +77,7 @@ namespace ElectionAutomationSystem.Controllers
             }
             ViewBag.PresidentId = new SelectList(db.Presidents, "PresidentId", "PresidentName", party.PresidentId);
             ViewBag.HeadquartersId = new SelectList(db.Provinces, "ProvinceId", "ProvinceName", party.HeadquartersId);
-            return View(party);
+            return PartialView(party);
         }
 
         // POST: Parties/Edit/5
@@ -95,7 +95,7 @@ namespace ElectionAutomationSystem.Controllers
             }
             ViewBag.PresidentId = new SelectList(db.Presidents, "PresidentId", "PresidentName", party.PresidentId);
             ViewBag.HeadquartersId = new SelectList(db.Provinces, "ProvinceId", "ProvinceName", party.HeadquartersId);
-            return View(party);
+            return PartialView(party);
         }
 
         // GET: Parties/Delete/5
@@ -110,7 +110,7 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(party);
+            return PartialView(party);
         }
 
         // POST: Parties/Delete/5

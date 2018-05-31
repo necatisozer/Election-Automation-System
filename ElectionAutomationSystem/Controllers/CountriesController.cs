@@ -32,13 +32,13 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return PartialView(country);
         }
 
         // GET: Countries/Create
         public ActionResult Create()
         {
-            return View();
+            return PartialView();
         }
 
         // POST: Countries/Create
@@ -55,7 +55,7 @@ namespace ElectionAutomationSystem.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(country);
+            return PartialView(country);
         }
 
         // GET: Countries/Edit/5
@@ -70,7 +70,7 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return PartialView(country);
         }
 
         // POST: Countries/Edit/5
@@ -86,7 +86,7 @@ namespace ElectionAutomationSystem.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(country);
+            return PartialView(country);
         }
 
         // GET: Countries/Delete/5
@@ -101,7 +101,7 @@ namespace ElectionAutomationSystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(country);
+            return PartialView(country);
         }
 
         // POST: Countries/Delete/5

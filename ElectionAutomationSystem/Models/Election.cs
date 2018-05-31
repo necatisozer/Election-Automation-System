@@ -11,7 +11,8 @@ namespace ElectionAutomationSystem.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Election
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +23,8 @@ namespace ElectionAutomationSystem.Models
     
         public int ElectionId { get; set; }
         public string ElectionTitle { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> ElectionDate { get; set; }
         public Nullable<int> CountryId { get; set; }
     
